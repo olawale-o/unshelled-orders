@@ -37,7 +37,7 @@ const AccountLogin = () => {
     
   };
   return (
-    <div>
+    <div className="container">
       <h1>Account Login</h1>
       <div className="form-container">
         <form className="form" onSubmit={handleFormSubmit}>

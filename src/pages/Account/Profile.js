@@ -38,24 +38,26 @@ const AccountProfile = () => {
     
   };
   return (
-    <div>
-      <h1>Account Login</h1>
+    <div className="container">
+      <h1>Update profile</h1>
       <div className="form-container">
         <form className="form" onSubmit={handleFormSubmit}>
           <div className="field">
             <input
               type="text" name="sellerCity" placeholder="Seller city" value={formValues.sellerCity}
               onChange={onFormChange}
+              required
             />
           </div>
           <div className="field">
             <input
               type="text" name="sellerState" placeholder="Seller state" value={formValues.sellerState}
               onChange={onFormChange}
+              required
             />
           </div>
           <div className="field">
-            <button type="submit">Login</button>
+            <button type="submit">Update</button>
           </div>
         </form>
       </div>
