@@ -2,7 +2,6 @@ import { api } from "../api";
 
 export const loginService = async (email, password) => {
   const response = await api.post("/account", { email, password },  {
-    headers: { 'Content-Type': 'application/json' },
     withCredentials: true
   });
   return response.data;
