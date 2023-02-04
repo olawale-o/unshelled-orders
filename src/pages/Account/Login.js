@@ -17,18 +17,17 @@ const AccountLogin = () => {
       [name]: value,
     });
   };
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    console.log(formValues);
     try {
-      const response = loginService({
+      const response = await loginService({
         username: formValues.username,
         password: formValues.password,
       });
       if (response) {
         setUser({
           ...response.seller,
-          token: response.token,
+          token: response.accessToken,
         });
         navigate("/order_items");
       }
@@ -46,12 +45,14 @@ const AccountLogin = () => {
             <input
               type="text" name="username" placeholder="Username" value={formValues.username}
               onChange={onFormChange}
+              required
             />
           </div>
           <div className="field">
             <input
               type="password" name="password" placeholder="Password" value={formValues.password}
               onChange={onFormChange}
+              required
             />
           </div>
           <div className="field">
