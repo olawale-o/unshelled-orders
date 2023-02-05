@@ -1,16 +1,19 @@
 import { api } from "../api";
 
-export const loginService = async (email, password) => {
-  const response = await api.post("/account", { email, password },  {
-    withCredentials: true
+export const loginService = async ({ username, password }) => {
+  const response = await api.post("/account", { username, password }, {
+    withCredentials: true,
   });
   return response.data;
 };
 
-export const updateAccountService = async (data) => {
+export const updateAccountService = async (data, token) => {
   const response = await api.put('/account', data, {
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
     withCredentials: true,
   });
+  console.log(response.data);
   return response.data;
 };
