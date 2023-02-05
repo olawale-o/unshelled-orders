@@ -20,8 +20,11 @@ export const getSingeleOrderService = async (token, orderId) => {
   return response.data;
 };
 
-export const deleteOrderService = async (orderId) => {
+export const deleteOrderService = async (token, orderId) => {
   const response = await api.delete(`/order_items/${orderId}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
     withCredentials: true,
   });
   return response.data;

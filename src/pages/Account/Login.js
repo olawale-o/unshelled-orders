@@ -26,6 +26,7 @@ const AccountLogin = () => {
         password: formValues.password,
       });
       if (response) {
+        localStorage.setItem('seller_id', response.seller.seller_id);
         setUser({
           ...response.seller,
           token: response.accessToken,

@@ -11,12 +11,10 @@ const PersistAuth = () => {
     let isMounted = true;
   
     const verifyRefreshToken = async () => {
-      console.log('verifyRefreshToken');
       try {
         await refresh();
       }
       catch (err) {
-        console.error(err);
         setUser(null);
       }
       finally {
