@@ -33,6 +33,7 @@ const AccountProfile = () => {
         navigate("/order_items");
       }
     } catch (e) {
+      setError('Invalid credentials');
       console.log(e);
     }
     
