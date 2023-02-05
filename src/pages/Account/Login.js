@@ -5,6 +5,7 @@ import { useAccount } from "../../provider/AccountProvider";
 
 const AccountLogin = () => {
   const navigate = useNavigate();
+  const [error, setError] = useState(null);
   const { setUser } = useAccount();
   const [formValues, setFormValues] = useState({
     username: "",
@@ -32,12 +33,14 @@ const AccountLogin = () => {
         navigate("/order_items");
       }
     } catch (e) {
+      setError('Invalid username or password');
       console.log(e);
     }
     
   };
   return (
     <div className="container">
+      {error && <div className="error">{error}</div>}
       <h1>Account Login</h1>
       <div className="form-container">
         <form className="form" onSubmit={handleFormSubmit}>

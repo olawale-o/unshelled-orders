@@ -5,6 +5,7 @@ import { useAccount } from "../../provider/AccountProvider";
 
 const AccountProfile = () => {
   const navigate = useNavigate();
+  const [error, setError] = useState(null);
   const { user, setUser } = useAccount();
   const [formValues, setFormValues] = useState({
     sellerCity: "",
@@ -19,12 +20,11 @@ const AccountProfile = () => {
   };
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log(formValues);
     try {
       const response = updateAccountService({
         sellerCity: formValues.sellerCity,
         sellerState: formValues.sellerState,
-      });
+      }, user.token);
       if (response) {
         setUser({
           ...user,
@@ -39,6 +39,7 @@ const AccountProfile = () => {
   };
   return (
     <div className="container">
+      {error && <div className="error">{error}</div>}
       <h1>Update profile</h1>
       <div className="form-container">
         <form className="form" onSubmit={handleFormSubmit}>
