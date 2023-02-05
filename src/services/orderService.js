@@ -1,7 +1,7 @@
 import { api } from "../api";
 
 export const getOrdersService = async (token, page) => {
-  const response = await api.get(`/order_items?items_per_page=${page.items_per_page}&page=${page.page}`, {
+  const response = await api.get(`/order_items?items_per_page=${page.items_per_page}&page=${page.page}&sort_by=${page.sortBy}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
