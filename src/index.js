@@ -1,13 +1,46 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import AccountLogin from './pages/Account/Login';
+import Orders from './pages/Orders';
+import OrderDetails from './pages/Orders/Details';
+import AccountProfile from './pages/Account/Profile';
+import PersistAuth from './pages/PersistRoute';
 
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <App />,
+    children: [
+      {
+        index: true, element: <AccountLogin />,
+      },
+      {
+        path: 'login', element: <AccountLogin />,
+      },
+      {
+        path: 'profile', element: <PersistAuth />,
+        children: [
+          {index: true, element: <AccountProfile />},
+        ],
+      },
+      {
+        path: 'order_items', element: <PersistAuth />,
+        children: [
+          {index: true, element: <Orders />},
+          {path: ':id', element: <OrderDetails />},
+        ],
+      },
+    ]
+  }
+]);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
