@@ -8,6 +8,7 @@ import AccountLogin from './pages/Account/Login';
 import Orders from './pages/Orders';
 import OrderDetails from './pages/Orders/Details';
 import AccountProfile from './pages/Account/Profile';
+import PersistAuth from './pages/PersistRoute';
 
 const router = createBrowserRouter([
   {
@@ -21,14 +22,18 @@ const router = createBrowserRouter([
         path: 'login', element: <AccountLogin />,
       },
       {
-        path: 'profile', element: <AccountProfile />,
+        path: 'profile', element: <PersistAuth />,
+        children: [
+          {index: true, element: <AccountProfile />},
+        ],
       },
       {
-        path: 'order_items', element: <Orders />,
+        path: 'order_items', element: <PersistAuth />,
+        children: [
+          {index: true, element: <Orders />},
+          {path: ':id', element: <OrderDetails />},
+        ],
       },
-      {
-        path: 'order_items/:id', element: <OrderDetails />,
-      }
     ]
   }
 ]);
