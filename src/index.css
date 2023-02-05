@@ -134,3 +134,38 @@ td, th {
   align-items: center;
   flex-direction: column;
 }
+
+.filter {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 20px;
+  background: yellow;
+}
+
+.filter .field {
+  width: 100%;
+}
+
+.order-action {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.btn {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  outline: none;
+  cursor: pointer;
+}
+
+.btn-delete {
+  background-color: red;
+  color: white;
+}
