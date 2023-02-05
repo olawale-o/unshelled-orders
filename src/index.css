@@ -119,3 +119,18 @@ td, th {
     transform: rotate(360deg);
   }
 }
+
+.error {
+  color: red;
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+.content {
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
